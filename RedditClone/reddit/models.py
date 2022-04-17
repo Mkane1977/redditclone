@@ -1,8 +1,11 @@
 from django.db import models
+from django.db.models import Model
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.conf import settings
 import uuid
+
+
  
 class BaseModel(models.Model):
     eid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -77,3 +80,6 @@ class UserVote(BaseModel):
  
     class Meta: unique_together = ['voter', 'object_id', 'content_type']
 # Create your models here.
+
+    class GeeksModel(Model):
+     geeks_field = models.ImageField()
