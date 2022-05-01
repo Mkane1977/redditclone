@@ -7,7 +7,7 @@ def post_list(request):
     posts = Post.objects.all().order_by('-date_created')
     return render(request, 'reddit/post_list.html',  {'posts': posts})
 
-@login_required
+#@login_required
 def post_new(request):
     if request.method == "POST":
         form = PostForm(request.POST)
@@ -22,7 +22,7 @@ def post_new(request):
         form = PostForm()
     return render(request, 'reddit/post_edit.html', {'form': form, 'is_create': True})
 
-@login_required
+#@login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -43,7 +43,7 @@ def sub_detail(request, pk):
     sub = get_object_or_404(SubReddit, pk=pk)
     return render(request, 'reddit/sub_detail.html', {'sub': sub})
 
-@login_required
+#@login_required
 def add_comment(request, pk, parent_pk=None):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
