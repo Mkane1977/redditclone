@@ -81,5 +81,5 @@ class UserVote(BaseModel):
     class Meta: unique_together = ['voter', 'object_id', 'content_type']
 # Create your models here.
 
-    class GeeksModel(Model):
-     geeks_field = models.ImageField()
+class GeeksModel(Model):
+    geeks_field = models.ImageField()

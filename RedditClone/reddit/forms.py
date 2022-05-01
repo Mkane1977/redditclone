@@ -13,3 +13,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('text',)
 
+class GeeksForm(forms.Form):
+    name = forms.CharField()
+    geeks_field = forms.ImageField()

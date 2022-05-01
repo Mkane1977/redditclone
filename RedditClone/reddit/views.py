@@ -61,3 +61,7 @@ def add_comment(request, pk, parent_pk=None):
 
 
 # Create your views here.
+def home_view(request):
+    context = {}
+    context['form'] = GeeksForm()
+    return render( request, "base.html", context)
