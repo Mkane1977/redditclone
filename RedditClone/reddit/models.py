@@ -46,6 +46,7 @@ class Post(Votable):
     url = models.URLField('URL', max_length=200, null=True, blank=True)
     text = models.TextField(blank=True, null=True)
     comment_count = models.PositiveIntegerField(default=0)
+    geeks_field = models.ImageField(blank= True,upload_to='geeksmodel_geeks_field')
  
     def children(self):
         return self.comments.filter(parent=None)

@@ -1,18 +1,20 @@
+from email.mime import image
 from django import forms
 from .models import *
  
 class PostForm(forms.ModelForm):
     subreddits = forms.ModelMultipleChoiceField(queryset=SubReddit.objects.all())
- 
+    geeks_field = forms.ImageField()
     class Meta:
         model = Post
         fields = ('title', 'text', 'url', 'subreddits')
+        
  
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ('text',)
 
-class GeeksForm(forms.Form):
-    name = forms.CharField()
-    geeks_field = forms.ImageField()
+#class GeeksForm(forms.Form):
+ #   name = forms.CharField()
+ #   geeks_field = forms.ImageField()
