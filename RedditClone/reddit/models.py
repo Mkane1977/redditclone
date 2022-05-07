@@ -1,10 +1,11 @@
+from unittest.mock import DEFAULT
 from django.db import models
 from django.db.models import Model
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.conf import settings
 import uuid
-
+from django.utils import timezone
 
  
 class BaseModel(models.Model):
@@ -82,4 +83,6 @@ class UserVote(BaseModel):
 # Create your models here.
 
 class GeeksModel(Model):
-    geeks_field = models.ImageField()
+    geeks_field = models.ImageField(blank= True,upload_to='geeksmodel_geeks_field')
+    #geeks_body = models.TextField()
+   # geeks_publish = models.DateTimeField(default=timezone.now)

@@ -1,6 +1,7 @@
 from django.urls import path, include
 from . import views
 
+from .views import home_view
 
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('post/<uuid:pk>/edit/', views.post_edit, name='post_edit'),
     path('post/<uuid:pk>/comment/', views.add_comment, name='add_comment_to_post'),
     path('post/<uuid:pk>/comment/<uuid:parent_pk>/', views.add_comment, name='add_reply_to_comment'),
+     path('', home_view ),
 ]
