@@ -9,7 +9,7 @@
                     {% for reddit in reddit_images %}
             
                     {{ reddit.name }}
-                     <img src="{{ reddit.geeks_field.url }}" />
+                     <img src="{{ media.image.url }}" />
            
     {% endfor %}
                     <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>

@@ -46,7 +46,7 @@ def post_detail(request, pk):
      
    
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'reddit/post_detail.html', {'post': post})
+    return render(request, 'reddit/post_detail.html', {'post': post,'images': post})
 
 def sub_detail(request, pk):
     sub = get_object_or_404(SubReddit, pk=pk)
@@ -81,6 +81,6 @@ def display_images(request):
     if request.method == 'GET':
   
         # getting all the objects of hotel.
-       posts = Post.objects.all() 
-       return render((request, 'display_images.html',
-                     {'reddit_images' : posts}))
+       post = Post.objects.all() 
+       return render((request, 'post_detail.html',
+                     {'images' : post}))

@@ -47,7 +47,7 @@ class Post(Votable):
     text = models.TextField(blank=True, null=True)
     comment_count = models.PositiveIntegerField(default=0)
     name = models.CharField(max_length=50,default='DEFAULT VALUE')
-    geeks_field = models.ImageField(blank= True,upload_to='reddit_images/')
+    geeks_field = models.ImageField(blank= True,upload_to='images/')
  
     def __str__(self):
         return self.title
