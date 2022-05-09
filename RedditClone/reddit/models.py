@@ -46,8 +46,12 @@ class Post(Votable):
     url = models.URLField('URL', max_length=200, null=True, blank=True)
     text = models.TextField(blank=True, null=True)
     comment_count = models.PositiveIntegerField(default=0)
-    geeks_field = models.ImageField(blank= True,upload_to='geeksmodel_geeks_field')
+    name = models.CharField(max_length=50,default='DEFAULT VALUE')
+    geeks_field = models.ImageField(blank= True,upload_to='reddit_images/')
  
+    def __str__(self):
+        return self.title
+
     def children(self):
         return self.comments.filter(parent=None)
     def __str__(self):
@@ -83,7 +87,7 @@ class UserVote(BaseModel):
     class Meta: unique_together = ['voter', 'object_id', 'content_type']
 # Create your models here.
 
-class GeeksModel(Model):
-    geeks_field = models.ImageField(blank= True,upload_to='geeksmodel_geeks_field')
+#class GeeksModel(Model):
+    #geeks_field = models.ImageField(blank= True,upload_to='geeksmodel_geeks_field')
     #geeks_body = models.TextField()
    # geeks_publish = models.DateTimeField(default=timezone.now)

@@ -1,26 +1,33 @@
+
 from .models import *
 from .forms import *
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
- 
+from django.http import HttpResponse
 def post_list(request):
     posts = Post.objects.all().order_by('-date_created')
     return render(request, 'reddit/post_list.html',  {'posts': posts})
 
 #@login_required
 def post_new(request):
+    context = {}
     if request.method == "POST":
-        form = PostForm(request.POST)
+        form = PostForm(request.POST,request.FILES)
         if form.is_valid():
+           
             post = form.save(commit=False)
             post.submitter = request.user
             post.save()
+            
             for subreddit_id in request.POST.getlist('subreddits'):
                 SubRedditPost.objects.create(subreddit_id=subreddit_id, post=post)
             return redirect('post_detail', pk=post.pk)
+            
     else:
         form = PostForm()
+        context['form'] = form
     return render(request, 'reddit/post_edit.html', {'form': form, 'is_create': True})
+
 
 #@login_required
 def post_edit(request, pk):
@@ -36,6 +43,8 @@ def post_edit(request, pk):
     return render(request, 'reddit/post_edit.html', {'form': form, 'is_create': False})
 
 def post_detail(request, pk):
+     
+   
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'reddit/post_detail.html', {'post': post})
 
@@ -63,5 +72,15 @@ def add_comment(request, pk, parent_pk=None):
 # Create your views here.
 def home_view(request):
     context = {}
-    context['form'] = GeeksForm()
+    context['form'] = PostForm()
     return render( request, "base.html", context)
+
+
+def display_images(request):
+  
+    if request.method == 'GET':
+  
+        # getting all the objects of hotel.
+       posts = Post.objects.all() 
+       return render((request, 'display_images.html',
+                     {'reddit_images' : posts}))

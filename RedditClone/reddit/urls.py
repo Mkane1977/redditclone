@@ -1,8 +1,8 @@
 from django.urls import path, include
 from . import views
-
-from .views import home_view
-
+from django.conf import settings
+from .views import display_images, home_view
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.post_list, name='post_list'),
@@ -13,4 +13,10 @@ urlpatterns = [
     path('post/<uuid:pk>/comment/', views.add_comment, name='add_comment_to_post'),
     path('post/<uuid:pk>/comment/<uuid:parent_pk>/', views.add_comment, name='add_reply_to_comment'),
      path('', home_view ),
+    path('reddit_images', display_images, name = 'reddit_images'),
 ]
+
+
+if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL,
+                              document_root=settings.MEDIA_ROOT)
