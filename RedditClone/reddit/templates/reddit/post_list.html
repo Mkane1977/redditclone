@@ -6,12 +6,12 @@
         {% for post in posts %}
             <div class="post">
                 <h2>
-                    {% for reddit in reddit_images %}
+                    
             
-                    {{ reddit.name }}
-                     <img src="{{ media.image.url }}" />
+                    
+                     <img src="{{ post.geeks_field.url }}" style="width: 15%; float: center; margin-right: 20px;"/>
            
-    {% endfor %}
+   
                     <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
                     {% if post.url %}
                         <span class="url"><a href="{{post.url}}">{{post.url}}</a>
