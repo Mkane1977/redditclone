@@ -16,6 +16,7 @@ urlpatterns = [
      path('', home_view ),
     path('reddit_images', display_images, name = 'reddit_images'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
+   path("accounts/", include("accounts.urls")),
 ]
 
 
