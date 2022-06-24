@@ -46,7 +46,7 @@ def post_detail(request, pk):
      
    
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'reddit/post_detail.html', {'post': post,'images': post})
+    return render(request, 'reddit/post_detail.html', {'post': post})
 
 def sub_detail(request, pk):
     sub = get_object_or_404(SubReddit, pk=pk)

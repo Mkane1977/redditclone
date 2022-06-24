@@ -26,7 +26,8 @@ urlpatterns = [
     
 	path('admin/', admin.site.urls),
 	path('reddit/', include('reddit.urls')),
-    
+# login
+    path("accounts/", include("django.contrib.auth.urls")),
 ]
 
 if settings.DEBUG:
