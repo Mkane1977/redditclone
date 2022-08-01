@@ -1,7 +1,10 @@
-from django.urls import path, include
+from django import urls
+from django.urls import URLPattern, path, include
+
+
 from . import views
 from django.conf import settings
-from .views import display_images, home_view
+from .views import account_redirect, display_images, home_view
 from django.conf.urls.static import static
 from django.views.generic.base import TemplateView 
 
@@ -17,6 +20,8 @@ urlpatterns = [
     path('reddit_images', display_images, name = 'reddit_images'),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
    path("accounts/", include("accounts.urls")),
+
+   
   # path('accounts/', include('django.contrib.auth.urls')),
 ]
 

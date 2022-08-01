@@ -5,7 +5,11 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.conf import settings
 import uuid
+from django.urls import reverse
 from django.utils import timezone
+
+
+
 
  
 class BaseModel(models.Model):
