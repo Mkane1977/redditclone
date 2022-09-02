@@ -15,7 +15,7 @@ urlpatterns = [
     path('post/<uuid:pk>/comment/<uuid:parent_pk>/', views.add_comment, name='add_reply_to_comment'),
      path('', home_view ),
     path('reddit_images', display_images, name = 'reddit_images'),
-    path('', TemplateView.as_view(template_name='home.html'), name='home'),
+    # path('', TemplateView.as_view(template_name='home.html'), name='home'),
    path("accounts/", include("accounts.urls")),
   # path('accounts/', include('django.contrib.auth.urls')),
 ]
