@@ -134,5 +134,5 @@ MEDIA_URL = "/media/"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_REDIRECT_URL = "home"
+LOGIN_REDIRECT_URL = "redirect_to_posts_by_user"
 LOGOUT_REDIRECT_URL = "home" 

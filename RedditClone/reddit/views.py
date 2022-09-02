@@ -3,7 +3,8 @@ from .models import *
 from .forms import *
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 def post_list(request):
     posts = Post.objects.all().order_by('-date_created')
     return render(request, 'reddit/post_list.html',  {'posts': posts})
@@ -84,3 +85,15 @@ def display_images(request):
        post = Post.objects.all() 
        return render((request, 'post_detail.html',
                      {'images' : post}))
+
+def redirect_to_posts_by_user(request):
+    return HttpResponseRedirect(
+               reverse("post_list_by_user", 
+                       args=[request.user.id]))
+
+
+
+#@login_required
+def post_list_by_user(request, pk):
+    return HttpResponse('hello this is where your posts would be, number '+str(pk))
+
