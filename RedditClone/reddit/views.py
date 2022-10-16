@@ -5,6 +5,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(['GET'])
+def hello_drf(request):
+    return Response('hellooooo')
+
 @login_required
 def account_redirect(request):
     return redirect('account-landing', pk=request.user.pk, name=request.user.username)

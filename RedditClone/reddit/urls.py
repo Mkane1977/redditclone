@@ -10,6 +10,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', views.post_list, name='post_list'),
+    path('hello', views.hello_drf),
     path('post/<uuid:pk>/', views.post_detail, name='post_detail'),
     path('sub/<uuid:pk>/', views.sub_detail, name='sub_detail'),
     path('post/new/', views.post_new, name='post_new'),
